@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SOSEL Style Personal Website</title>
+  <style>
+    :root {
+      --navy: #0f2747;
+      --navy-2: #163760;
+      --sky: #dceaf7;
+      --line: #d6dde7;
+      --text: #1e2a36;
+      --muted: #5f6f80;
+      --white: #ffffff;
+      --max: 1100px;
+      --radius: 18px;
+      --shadow: 0 12px 28px rgba(15, 39, 71, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Arial, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+      color: var(--text);
+      background: #f7f9fc;
+      line-height: 1.7;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    .container {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      background: var(--navy);
+      color: var(--white);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 16px 0;
+    }
+
+    .brand {
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      font-size: 1.05rem;
+    }
+
+    .brand small {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 400;
+      opacity: 0.8;
+      margin-top: 2px;
+    }
+
+    .menu {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      font-size: 0.96rem;
+    }
+
+    .menu a {
+      opacity: 0.92;
+    }
+
+    .menu a:hover {
+      opacity: 1;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .hero {
+      background: linear-gradient(rgba(15,39,71,0.7), rgba(15,39,71,0.7)),
+        url('https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=1600&q=80') center/cover;
+      color: var(--white);
+      padding: 110px 0 90px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(2.2rem, 4.5vw, 4rem);
+      letter-spacing: 0.02em;
+    }
+
+    .hero p.lead {
+      margin: 12px auto 0;
+      max-width: 760px;
+      font-size: 1.1rem;
+      opacity: 0.95;
+    }
+
+    .hero .sub {
+      margin-top: 10px;
+      font-size: calc(1rem - 4pt);
+      letter-spacing: 0.04em;
+      opacity: 0.88;
+    }
+
+    .section {
+      padding: 70px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 34px;
+    }
+
+    .section-title h2 {
+      margin: 0;
+      color: var(--navy);
+      font-size: 2rem;
+    }
+
+    .section-title p {
+      margin: 10px auto 0;
+      color: var(--muted);
+      max-width: 760px;
+    }
+
+    .about-box {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 32px;
+      box-shadow: var(--shadow);
+    }
+
+    .about-box strong {
+      color: var(--navy);
+    }
+
+    .sponsor-row,
+    .menu-grid,
+    .gallery-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .sponsor-row {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .logo-card,
+    .menu-card,
+    .gallery-item,
+    .research-card,
+    .pub-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .logo-card {
+      min-height: 110px;
+      display: grid;
+      place-items: center;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .menu-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .menu-card {
+      padding: 28px 18px;
+      text-align: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .menu-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 30px rgba(15,39,71,0.12);
+    }
+
+    .menu-card .icon {
+      width: 62px;
+      height: 62px;
+      border-radius: 50%;
+      margin: 0 auto 14px;
+      display: grid;
+      place-items: center;
+      background: var(--sky);
+      color: var(--navy);
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 22px;
+    }
+
+    .research-list,
+    .pub-list,
+    .contact-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .research-card,
+    .pub-card {
+      padding: 24px;
+    }
+
+    .research-card h3,
+    .pub-card h3,
+    .contact-box h3 {
+      margin: 0 0 10px;
+      color: var(--navy);
+    }
+
+    .research-card ul,
+    .pub-card ul,
+    .contact-box ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    .gallery-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .gallery-item {
+      overflow: hidden;
+    }
+
+    .gallery-thumb {
+      aspect-ratio: 4 / 3;
+      background: linear-gradient(135deg, #d7e6f6, #f3f7fc);
+      display: grid;
+      place-items: center;
+      color: var(--navy);
+      font-weight: 700;
+    }
+
+    .gallery-caption {
+      padding: 16px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .contact-box {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 28px;
+    }
+
+    .contact-box iframe {
+      width: 100%;
+      min-height: 320px;
+      border: 0;
+      border-radius: 14px;
+      background: #eef3f9;
+    }
+
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.8);
+      text-align: center;
+      padding: 22px 16px;
+      font-size: 0.93rem;
+    }
+
+    @media (max-width: 980px) {
+      .sponsor-row,
+      .menu-grid,
+      .gallery-grid,
+      .two-col {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 980px) {
+      #about > .container > div[style*="grid-template-columns: 1.05fr 0.95fr"] {
+        grid-template-columns: 1fr !important;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .topbar-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .sponsor-row,
+      .menu-grid,
+      .gallery-grid,
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 88px 0 72px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">
+        SOSEL Homepage
+      </div>
+      <nav class="menu">
+        <a href="#home">Home</a>
+        <a href="#research">Research</a>
+        <a href="#publications">Publication</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" id="home">
+    <div class="container">
+      <h1>SOSEL</h1>
+      <div class="sub">- Ships and Offshore Structures Engineering Lab -</div>
+      
+    </div>
+  </section>
+
+  <section class="section" id="about">
+    <div class="container">
+      <div class="section-title">
+        <p style="font-size: 4rem; color: var(--navy); font-weight: 700; margin: 0 0 22px; text-align: center;">Welcome to SOSEL</p>
+      </div>
+      <div style="height: 1px; background: #cfd4dc; margin: 0 0 48px;"></div>
+      <div style="display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 36px; align-items: start;">
+        <div style="margin-top:120px;">
+          <img src="front-photo/sosel_lab.jpg" alt="SOSEL lab photo" style="width: 100%; border: 1px solid var(--line); box-shadow: var(--shadow);" />
+        </div>
+        <div style="padding-top: 18px;">
+          <h2 style="margin: 0 0 28px; color: var(--navy); font-size: 3.4rem;">About us</h2>
+          <p style="margin: 0 0 18px; color: #3f4aa8; font-size: 1.15rem; font-weight: 700;">Welcome to SOSEL.</p>
+          <p style="margin: 0 0 16px; color: var(--text); font-size: 1rem; line-height: 1.95; text-align: justify;">
+            SOSEL (Ships and Offshore Structures Engineering Laboratory) was established in September 2008 when Professor <strong>Joonmo CHOUNG</strong> joined Inha University as a faculty member in the Department of Naval Architecture and Ocean Engineering.
+          </p>
+          <p style="margin: 0 0 16px; color: var(--text); font-size: 1rem; line-height: 1.95; text-align: justify;">
+            Since its establishment, SOSEL has developed world-leading technologies in several research areas, including the ultimate strength of ships and offshore structures, the fatigue strength of ships and offshore structures, ice-resistance estimation for icebreaking vessels, and load and stress analysis of offshore wind turbines.
+          </p>
+          <p style="margin: 0 0 16px; color: var(--text); font-size: 1rem; line-height: 1.95; text-align: justify;">
+            SOSEL developed the first algorithm in the world capable of predicting the ultimate strength of damaged ships, and implemented it in a software package named <strong>UMADS</strong> (Ultimate Moment Analyses of Damaged Ships). The laboratory also developed <strong>FAFOS</strong> (Fatigue Analyses of Floating Offshore Structures), which enables fully statistical fatigue assessment, and has established its own in-house platform for the design of catenary mooring systems.
+          </p>
+          <p style="margin: 0 0 16px; color: var(--text); font-size: 1rem; line-height: 1.95; text-align: justify;">
+            </p>
+        </div>
+      </div>
+
+      <div style="margin-top:10px;">
+        <p style="margin: 0 0 16px; color: var(--text); font-size: 1rem; line-height: 1.95; text-align: justify;">
+            In addition, SOSEL developed <strong>HydroQus</strong> (Hydrodynamic Subroutines for Abaqus), which provides a world-first methodology for estimating the ice resistance of icebreaking vessels while accounting for hydrodynamic effects. In the field of floating offshore wind turbines, SOSEL has established a framework for fully coupled load-stress analysis by coupling HydroQus with OpenFAST. More recently, SOSEL developed <strong>UnityDyn</strong>, which enables fully coupled load-stress analysis for the substructures of fixed offshore wind turbines.
+        </p>
+
+        <div style="margin-top:28px; overflow-x:auto;">
+            <h3 style="margin: 0 0 14px; color: var(--navy); font-size: 1.3rem;">Main Commercial/Non-commercial Software in SOSEL</h3>
+            <table style="width:100%; border-collapse:collapse; background:var(--white); font-size:0.95rem;">
+              <thead>
+                <tr style="background:#eef3f9;">
+                  <th style="border:1px solid #d6dde7; padding:10px; text-align:left;">Software</th>
+                  <th style="border:1px solid #d6dde7; padding:10px; text-align:left;">Developer</th>
+                  <th style="border:1px solid #d6dde7; padding:10px; text-align:left;">Main Application</th>
+                  <th style="border:1px solid #d6dde7; padding:10px; text-align:left;">License</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="border:1px solid #d6dde7; padding:10px;">Aqwa</td>
+                  <td style="border:1px solid #d6dde7; padding:10px;">Ansys</td>
+                  <td style="border:1px solid #d6dde7; padding:10px;">Hydrodynamic coefficient derivation</td>
+                  <td style="border:1px solid #d6dde7; padding:10px;">2 licenses purchased</td>
+                </tr>
+                <tr>
+                  <td style="border:1px solid #d6dde7; padding:10px;">OrcaFlex</td>
+                  <td style="border:1px solid #d6dde7; padding:10px;">Orcina</td>
+                  <td style="border:1px solid #d6dde7; padding:10px;">Hydrodynamic coefficient derivation and time-domain simulations</td>
+                  <td style="border:1px solid #d6dde7; padding:10px;">20 licenses donated</td>
+                </tr>
+                <tr>
+                  <td style="border:1px solid #d6dde7; padding:10px;">Abaqus</td>
+                  <td style="border:1px solid #d6dde7; padding:10px;">Simulia</td>
+                  <td style="border:1px solid #d6dde7; padding:10px;">Nonlinear structural analysis and coupling with HydroQus</td>
+                  <td style="border:1px solid #d6dde7; padding:10px;">256 tokens purchased</td>
+                </tr>
+                <tr>
+                  <td style="border:1px solid #d6dde7; padding:10px;">FEGate</td>
+                  <td style="border:1px solid #d6dde7; padding:10px;">RAONX</td>
+                  <td style="border:1px solid #d6dde7; padding:10px;">Structural analysis pre/post processor</td>
+                  <td style="border:1px solid #d6dde7; padding:10px;">50 licenses donated</td>
+                </tr>
+                <tr>
+                  <td style="border:1px solid #d6dde7; padding:10px;">MSC/Nastran</td>
+                  <td style="border:1px solid #d6dde7; padding:10px;">Cadence (formerly Hexagon)</td>
+                  <td style="border:1px solid #d6dde7; padding:10px;">Linear structural analysis</td>
+                  <td style="border:1px solid #d6dde7; padding:10px;">50 licenses donated</td>
+                </tr>
+                <tr>
+                  <td style="border:1px solid #d6dde7; padding:10px;">HyperWorks</td>
+                  <td style="border:1px solid #d6dde7; padding:10px;">Siemens (formerly Altair)</td>
+                  <td style="border:1px solid #d6dde7; padding:10px;">Linear structural analysis and pre/post processing</td>
+                  <td style="border:1px solid #d6dde7; padding:10px;">50 licenses donated</td>
+                </tr>
+                <tr>
+                  <td style="border:1px solid #d6dde7; padding:10px;">OpenFAST</td>
+                  <td style="border:1px solid #d6dde7; padding:10px;">NLRL (formerly NREL)</td>
+                  <td style="border:1px solid #d6dde7; padding:10px;">Fully-coupled load analyses of offshore wind turbines</td>
+                  <td style="border:1px solid #d6dde7; padding:10px;">Open source code</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0;" id="support">
+    <div class="container">
+      
+	  <div class="section-title">
+      <h2>Acknowledgement</h2>
+    </div>
+
+    <p style="text-align:center; margin:10px 0 28px;">
+     We gratefully acknowledge the organizations that have generously provided software licenses and technical support to SOSEL. Their support has significantly contributed to our research activities and academic development.
+    </p>
+
+      <div class="sponsor-row">
+        <div class="logo-card">
+  <img src="logos/Orcina.jpg" alt="Orcina">
+</div>
+
+<div class="logo-card">
+  <img src="logos/Hexagon.jpg" alt="Hexagon">
+</div>
+
+<div class="logo-card">
+  <img src="logos/FEGate.jpg" alt="FEGate">
+</div>
+
+<div class="logo-card">
+  <img src="logos/Altair.png" alt="Altair">
+</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="research">
+    <div class="container">
+      <div class="section-title">
+        <h2>Research</h2>
+        <p>현재 연구 주제, 수행 과제, 산업 협력 분야를 정리하는 섹션입니다.</p>
+      </div>
+      <div class="research-list">
+        <div class="research-card">
+          <h3>Major Research Topics</h3>
+          <ul>
+            <li>Structural safety and reliability of ships and offshore structures</li>
+            <li>Floating offshore wind turbine support structures and mooring systems</li>
+            <li>Dynamic power cable mechanics, fatigue, and stress assessment</li>
+            <li>Ultimate strength, collapse behavior, and nonlinear finite element analysis</li>
+          </ul>
+        </div>
+        <div class="research-card">
+          <h3>Industrial Collaboration</h3>
+          <ul>
+            <li>Design verification and safety assessment</li>
+            <li>Development of engineering procedures and testing frameworks</li>
+            <li>Code-based and simulation-based structural evaluation</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="publications">
+    <div class="container">
+      <div class="section-title">
+        <h2>Publication</h2>
+        <p>국제저널, 국내저널, 주요 논문, 특허 등을 나누어 정리하기 좋습니다.</p>
+      </div>
+      <div class="two-col">
+        <div class="pub-card">
+          <h3>International Journal</h3>
+          <ul>
+            <li>Representative paper title 1</li>
+            <li>Representative paper title 2</li>
+            <li>Representative paper title 3</li>
+            <li>Representative paper title 4</li>
+          </ul>
+        </div>
+        <div class="pub-card">
+          <h3>Domestic Journal / Conference</h3>
+          <ul>
+            <li>Domestic paper or conference title 1</li>
+            <li>Domestic paper or conference title 2</li>
+            <li>Conference proceeding title 3</li>
+            <li>Technical report or patent title 4</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="gallery">
+    <div class="container">
+      <div class="section-title">
+        <h2>Gallery</h2>
+        <p>연구 사진, 실험 장면, 해석 모델, 학회 사진 등을 보여줄 수 있습니다.</p>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <div class="gallery-thumb">IMAGE</div>
+          <div class="gallery-caption">Laboratory activity or project snapshot</div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-thumb">IMAGE</div>
+          <div class="gallery-caption">Simulation model, field work, or conference photo</div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-thumb">IMAGE</div>
+          <div class="gallery-caption">Offshore engineering related visual content</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="section-title">
+        <h2>Location & Contact</h2>
+        <p>참고 사이트처럼 주소와 위치 정보를 하단에 배치했습니다.</p>
+      </div>
+      <div class="two-col">
+        <div class="contact-box">
+          <h3>Contact Information</h3>
+          <ul>
+            <li>Address: Inha University, 100 Inha-ro, Michuhol-gu, Incheon 22212, Republic of Korea</li>
+            <li>Tel: 032-860-7346</li>
+            <li>Email: jmchoung@inha.ac.kr</li>
+            <li>Office: Add room number or lab location here</li>
+          </ul>
+        </div>
+        <div class="contact-box">
+          <h3>Map</h3>
+          <iframe
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=Inha%20University&output=embed">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Joonmo Choung. All rights reserved.
+  </footer>
+</body>
+</html>
